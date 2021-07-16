@@ -1,0 +1,99 @@
+#
+# Defines environment variables.
+#
+
+###########################
+# Terminal
+###########################
+
+if [[ "$TERM" =~ "^xterm" ]]; then
+  export TERM="xterm-256color"
+fi
+
+
+###########################
+# Editors
+###########################
+
+export PAGER='less'
+
+if (( $+commands[nvim] )) ; then
+  VISUAL="nvim"
+elif (( $+commands[vim] )) ; then
+  VISUAL="vim"
+else
+  VISUAL="vi"
+fi
+
+export VISUAL EDITOR="$VISUAL"
+
+
+###########################
+# Language
+###########################
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+
+###########################
+# Path
+###########################
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /usr/local/{bin,sbin}
+  ${HOME}/.local/bin
+  $path
+)
+
+# Load Nix profile if available.
+if [ -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]; then
+  source "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path manpath
+
+
+###########################
+# Less
+###########################
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
+export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
+export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
+export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
+export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
+export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
+
+
+# Define colors for BSD ls.
+export LSCOLORS='exfxcxdxbxGxDxabagacad'
+
+# Define colors for the completion system.
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+
+
+###########################
+# Temporary Files
+###########################
+
+if [[ ! -d "$TMPDIR" ]]; then
+  export TMPDIR="/tmp/$LOGNAME"
+  mkdir -p -m 700 "$TMPDIR"
+fi
+TMPPREFIX="${TMPDIR%/}/zsh"
