@@ -1,9 +1,13 @@
 # lc-shell for Nix
 
-This repository contains the Nix version of my Vim/ZSH/Tmux configuration called [lc-shell](https://github.com/lightcode/lc-shell). This configuration is a module for [home-manager](https://github.com/nix-community/home-manager).
+This repository contains a Nix module to configure Vim, ZSH and tmux. This module is meant to be used with [home-manager](https://github.com/nix-community/home-manager).
 
 
-## Usage
+## Installation
+
+### Prerequisites
+
+You need to have Nix and home-manager installed.
 
 ### Include the module
 
@@ -13,7 +17,7 @@ This repository contains the Nix version of my Vim/ZSH/Tmux configuration called
 niv add lightcode/lc-shell-nix -v v1.0.0
 ```
 
-Then, you can import the module like this:
+You can import it by adding these lines to your `home.nix`:
 
 ```nix
 {
@@ -22,12 +26,12 @@ Then, you can import the module like this:
   in [
     sources.lc-shell-nix.outPath
   ];
-
-  # ...
 }
 ```
 
 **Or by fetching manually the tarball**:
+
+If you don't want to use `niv`, you can add these lines to your `home.nix`:
 
 ```nix
 {
@@ -39,16 +43,58 @@ Then, you can import the module like this:
 
 ### Enable the module
 
-In your home-manager configuration, you need to enable the features you need:
+Once the module is added to your configuration, you need to enable the features you need:
 
 ```nix
 {
-
   lc-shell = {
     vim.enable = true;
     tmux.enable = true;
     zsh.enable = true;
   };
-
 }
 ```
+
+
+## What lc-shell-nix can do?
+
+### Vim
+
+* <kbd>CTRL</kbd> + <kbd>k</kbd> and <kbd>CTRL</kbd> + <kbd>p</kbd>: enable/disable paste mode and hide/show line number
+* <kbd>,</kbd> + <kbd>w</kbd>: write
+* <kbd>,</kbd> + <kbd>q</kbd>: quit buffer
+* <kbd>CTRL</kbd> + <kbd>p</kbd>: open ctrlp, an extension that allow to open files
+* <kbd>,</kbd> + <kbd>Left</kbd>/<kbd>Right</kbd>: change buffer
+* <kbd>,</kbd> + <kbd>s</kbd>: strip trailing whitespace (remove white space at the end of lines)
+
+**Note**: in this context, buffers are used like tabs.
+
+
+### Tmux
+
+* <kbd>ALT</kbd> + <kbd>Up</kbd>/<kbd>Down</kbd>/<kbd>Left</kbd>/<kbd>Right</kbd>: move between panels
+* <kbd>ALT</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>: change window
+* <kbd>ALT</kbd> + <kbd>Space</kbd>: zoom a panel
+* <kbd>CTRL</kbd> + <kbd>b</kbd>, <kbd>PageUp</kbd>: scroll the pannel up. Next you can move with <kbd>PageUP</kbd>,
+  <kbd>PageDown</kbd> and the arrows. This mode is the copy mode.
+
+
+### ZSH
+
+Functions:
+
+* `reloadzsh`: reload `.zshrc`, `.zshenv` and run `rehash` (that permit to recreate hash table that contains all functions in PATH. This is usefull for completion)
+
+Shortcuts:
+
+* <kbd>ALT</kbd> + <kbd>g</kbd>: `git status --short`
+
+Usefull aliases:
+
+* `gl`: `git log`
+* `gc`: `git commit`
+
+
+### ZSH customizations
+
+To customize ZSH, you can add ZSH files in the `~/.zshrc.d` directory. You can still used the features provided by home-manager and Nix to override some parameters or add plugins.
