@@ -41,11 +41,6 @@ in {
       localVariables = {
         WORDCHARS = "*?_-.[]~&;!#$%^(){}<>";
       };
-      shellAliases = {
-        ip = "ip -c";
-        o = "open";
-        scu = "systemctl --user";
-      };
       envExtra = builtins.readFile ./files/zshenv;
       profileExtra = ''
       # Make sure that zshenv is loaded and anything won't be
