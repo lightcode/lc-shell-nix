@@ -10,6 +10,7 @@ alias grep="${aliases[grep]:-grep} --color=auto"
 if (( $+commands[nvim] )); then
   alias vi='nvim'
   alias vim='nvim'
+  alias vimdiff='nvim -d'
 fi
 
 if (( $+commands[exa] )) ; then
