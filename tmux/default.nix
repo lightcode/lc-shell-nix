@@ -9,6 +9,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.xclip
+    ];
+
     programs.tmux = {
       enable = true;
       baseIndex = 1;
