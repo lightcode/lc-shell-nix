@@ -85,6 +85,8 @@ in {
             let g:syntastic_javascript_checkers = ['jshint']
             let g:syntastic_yaml_checkers = ['yamllint']
             let g:syntastic_ansible_checkers = ['yaml/yamllint']
+
+            let g:syntastic_sh_shellcheck_args = "-x"
           '';
         }
         {
