@@ -30,6 +30,7 @@ in {
         vim-airline-themes
         vim-cue
         vim-gitgutter
+        vim-graphql
         vim-nix
 
         {
