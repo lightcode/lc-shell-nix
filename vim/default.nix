@@ -21,9 +21,8 @@ in {
     '';
 
     programs.neovim = let
-      pastemode-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-        pname = "pastemode-vim";
-        version = "2019-11-13";
+      pastemode-vim = pkgs.vimUtils.buildVimPlugin {
+        name = "pastemode-vim";
         src = pkgs.fetchFromGitHub {
           owner = "lightcode";
           repo = "PasteMode.vim";
