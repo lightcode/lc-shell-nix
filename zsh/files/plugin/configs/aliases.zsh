@@ -13,7 +13,10 @@ if (( $+commands[nvim] )); then
   alias vimdiff='nvim -d'
 fi
 
-if (( $+commands[exa] )) ; then
+if (( $+commands[eza] )) ; then
+  alias l='eza -lg'
+  alias ll='l -a'
+elif (( $+commands[exa] )) ; then
   alias l='exa -lg'
   alias ll='l -a'
 else
