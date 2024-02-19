@@ -9,17 +9,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.yamllint
-    ];
-
-    xdg.configFile."yamllint/config".text = ''
-      extends: relaxed
-
-      rules:
-        line-length: disable
-    '';
-
     programs.neovim = let
       pastemode-vim = pkgs.vimUtils.buildVimPlugin {
         name = "pastemode-vim";
