@@ -252,7 +252,7 @@ function! QuitIfNoBuffer(bang)
     endif
 endfunction
 
-command -nargs=* -range -bang GracefulQuit call QuitIfNoBuffer(<bang>0)
+command! -nargs=* -range -bang GracefulQuit call QuitIfNoBuffer(<bang>0)
 
 
 """
