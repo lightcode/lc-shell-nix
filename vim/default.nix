@@ -33,6 +33,17 @@ in {
         vim-nix
 
         {
+          plugin = ale;
+          config = ''
+            let g:ale_fixers = {
+            \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \  'python': ['ruff_format'],
+            \}
+            let g:ale_sh_shellcheck_options = '-x'
+            let g:ale_sh_shellcheck_change_directory = 0
+          '';
+        }
+        {
           plugin = vim-terraform;
           config = ''
             let g:terraform_fmt_on_save = 1
@@ -61,34 +72,6 @@ in {
           '';
         }
         {
-          plugin = syntastic;
-          config = ''
-            let g:syntastic_always_populate_loc_list = 1
-            let g:syntastic_auto_loc_list = 2
-            let g:syntastic_check_on_open = 1
-            let g:syntastic_check_on_wq = 1
-
-            " Here we can make check active or passive.
-            " I made `rst` checking passive because it doesn't
-            " handle Sphinx well.
-            let g:syntastic_mode_map = {
-                \ 'mode': 'active',
-                \ 'active_filetypes': [],
-                \ 'passive_filetypes': ['rst'] }
-
-            let g:syntastic_error_symbol = '✗'
-            let g:syntastic_warning_symbol = '⚠'
-
-            let g:syntastic_python_checkers = ['flake8']
-            let g:syntastic_go_checkers = ['go', 'golint', 'govet']
-            let g:syntastic_javascript_checkers = ['jshint']
-            let g:syntastic_yaml_checkers = ['yamllint']
-            let g:syntastic_ansible_checkers = ['yaml/yamllint']
-
-            let g:syntastic_sh_shellcheck_args = "-x"
-          '';
-        }
-        {
           plugin = ctrlp-vim;
           config = ''
             let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:12,results:12'
@@ -108,13 +91,13 @@ in {
 
             let g:airline_theme = 'bubblegum'
             let g:airline_skip_empty_sections = 1
-            let g:airline_extensions = ['tabline', 'ctrlp', 'syntastic', 'whitespace']
+            let g:airline_extensions = ['tabline', 'ctrlp', 'ale']
             let g:airline#extensions#tabline#enabled = 1
-            let g:airline#extensions#tabline#fnamemod = ':t'
             let g:airline#extensions#tabline#left_sep = ""
             let g:airline#extensions#tabline#left_alt_sep = ""
             let g:airline#extensions#tabline#right_sep = ""
             let g:airline#extensions#tabline#right_alt_sep = ""
+            let g:airline#extensions#tabline#formatter = 'default'
           '';
         }
       ];
