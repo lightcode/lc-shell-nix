@@ -181,7 +181,7 @@ augroup LanguageConfiguration
     autocmd FileType javascript    setlocal tabstop=2 shiftwidth=2 softtabstop=2
     autocmd FileType make          setlocal noexpandtab nolist
     autocmd FileType php           setlocal formatprg=par\ -w80\ -T4
-    autocmd FileType python        setlocal colorcolumn=79 completeopt-=preview listchars=tab:>.,
+    autocmd FileType python        setlocal completeopt-=preview listchars=tab:>.,
     autocmd FileType ruby          setlocal tabstop=2 shiftwidth=2 softtabstop=2
     autocmd FileType sh,zsh        setlocal tabstop=2 shiftwidth=2 softtabstop=2
     autocmd FileType verilog       setlocal tabstop=2 shiftwidth=2 softtabstop=2
