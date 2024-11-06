@@ -63,7 +63,7 @@ Once the module is added to your configuration, you need to enable the features 
 * <kbd>CTRL</kbd> + <kbd>k</kbd> and <kbd>CTRL</kbd> + <kbd>p</kbd>: enable/disable paste mode and hide/show line number
 * <kbd>,</kbd> + <kbd>w</kbd>: write
 * <kbd>,</kbd> + <kbd>q</kbd>: quit buffer
-* <kbd>CTRL</kbd> + <kbd>p</kbd>: open ctrlp, an extension that allow to open files
+* <kbd>CTRL</kbd> + <kbd>p</kbd>: open ctrlp, an extension that allows to open files
 * <kbd>,</kbd> + <kbd>Left</kbd>/<kbd>Right</kbd>: change buffer
 * <kbd>,</kbd> + <kbd>s</kbd>: strip trailing whitespace (remove white space at the end of lines)
 
@@ -75,7 +75,7 @@ Once the module is added to your configuration, you need to enable the features 
 * <kbd>ALT</kbd> + <kbd>Up</kbd>/<kbd>Down</kbd>/<kbd>Left</kbd>/<kbd>Right</kbd>: move between panels
 * <kbd>ALT</kbd> + <kbd>PageUp</kbd>/<kbd>PageDown</kbd>: change window
 * <kbd>ALT</kbd> + <kbd>Space</kbd>: zoom a panel
-* <kbd>CTRL</kbd> + <kbd>b</kbd>, <kbd>PageUp</kbd>: scroll the pannel up. Next you can move with <kbd>PageUP</kbd>,
+* <kbd>CTRL</kbd> + <kbd>b</kbd>, <kbd>PageUp</kbd>: scroll the panel up. Next you can move with <kbd>PageUP</kbd>,
   <kbd>PageDown</kbd> and the arrows. This mode is the copy mode.
 
 
@@ -83,18 +83,15 @@ Once the module is added to your configuration, you need to enable the features 
 
 Functions:
 
-* `reloadzsh`: reload `.zshrc`, `.zshenv` and run `rehash` (that permit to recreate hash table that contains all functions in PATH. This is usefull for completion)
+* `reloadzsh`: reload `.zshrc`, `.zshenv` and run `rehash` (that permit to recreate hash table that contains all functions in PATH. This is useful for completion)
 
-Shortcuts:
+Useful aliases:
 
-* <kbd>ALT</kbd> + <kbd>g</kbd>: `git status --short`
-
-Usefull aliases:
-
-* `gl`: `git log`
 * `gc`: `git commit`
+* `gl`: `git log`
+* `gws`: `git status --short`
 
 
 ### ZSH customizations
 
-To customize ZSH, you can add ZSH files in the `~/.zshrc.d` directory. You can still used the features provided by home-manager and Nix to override some parameters or add plugins.
+To customize ZSH, you can add ZSH files in the `~/.zshrc.d` directory. You can still use the features provided by home-manager and Nix to override some parameters or add plugins.
