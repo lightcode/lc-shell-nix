@@ -64,8 +64,6 @@ bindkey "$key_info[Backspace]" backward-delete-char
 bindkey "$key_info[Left]" backward-char
 bindkey "$key_info[Right]" forward-char
 
-bindkey -s "$key_info[Escape]g" '^Ugws^M'
-
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "$key_info[Control]V" edit-command-line
