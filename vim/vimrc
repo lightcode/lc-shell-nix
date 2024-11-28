@@ -155,7 +155,10 @@ nnoremap <silent> <C-k><C-p> :PasteModeToggle<cr>
 inoremap <C-k><C-p> <C-O>:PasteModeToggle<cr>
 
 " Strip trailing whitespace
-nnoremap <silent> <leader>s :call StripTrailingWhitespaces()<cr>
+nnoremap <silent> <leader>s :ALEFix trim_whitespace<cr>
+
+" Run the ALE code formatter
+nnoremap <silent> <leader>f :ALEFix<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,17 +206,6 @@ function! Prose()
 endfunction
 
 command! -nargs=0 Prose call Prose()
-
-
-"""
-" Strip trailing whitespace in the current buffer
-"""
-
-function! StripTrailingWhitespaces()
-    let l:winview = winsaveview()
-    silent! %s/\s\+$//
-    call winrestview(l:winview)
-endfunction
 
 
 """

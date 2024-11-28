@@ -37,7 +37,9 @@ in {
           config = ''
             let g:ale_fixers = {
             \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \  'nix': ['nixfmt'],
             \  'python': ['ruff_format'],
+            \  'typescript': ['prettier'],
             \}
             let g:ale_sh_shellcheck_options = '-x'
             let g:ale_sh_shellcheck_change_directory = 0
