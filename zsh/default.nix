@@ -1,9 +1,16 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 with lib;
 
-let cfg = config.lc-shell.zsh;
-in {
+let
+  cfg = config.lc-shell.zsh;
+in
+{
   options.lc-shell.zsh = {
     enable = mkEnableOption "zsh configuration";
   };
@@ -43,11 +50,11 @@ in {
       };
       envExtra = builtins.readFile ./files/zshenv;
       profileExtra = ''
-      # Make sure that zshenv is loaded and anything won't be
-      # override by the /etc/zprofile provided by the distro.
-      if [[ -f "''${HOME}/.zshenv" ]]; then
-        source "''${HOME}/.zshenv"
-      fi
+        # Make sure that zshenv is loaded and anything won't be
+        # override by the /etc/zprofile provided by the distro.
+        if [[ -f "''${HOME}/.zshenv" ]]; then
+          source "''${HOME}/.zshenv"
+        fi
       '';
       plugins = [
         {

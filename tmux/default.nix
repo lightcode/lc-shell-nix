@@ -1,9 +1,16 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 with lib;
 
-let cfg = config.lc-shell.tmux;
-in {
+let
+  cfg = config.lc-shell.tmux;
+in
+{
   options.lc-shell.tmux = {
     enable = mkEnableOption "tmux configuration";
   };
