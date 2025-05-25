@@ -35,7 +35,7 @@ in
     programs.zsh = {
       enable = true;
       enableCompletion = true;
-      initExtra = ''
+      initContent = ''
         ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
         for script ($HOME/.zshrc.d/*(N)); source "$script"
